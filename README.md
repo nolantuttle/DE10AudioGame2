@@ -1,8 +1,6 @@
 # DE10AudioGame2
-This is a continuation of the DE10AudioGame repository implementing a simon-style audio game on the DE10-Standard. 
-This implementation aims to implement a Raspberry Pi Zero 2 WH sending audio samples over GPIO pins using the SPI protocol and playing those using the DE10.
-The Raspberry Pi Zero 2 WH is responsible for managing audio files, packetizing audio data,
-and acting as the SPI master during transmission. Audio data is streamed in structured frames to
-ensure deterministic delivery and proper synchronization. On the DE10-Standard, the FPGA
-fabric implements an SPI slave interface and buffering logic to receive the incoming audio
-stream, while coordinating timing and data integrity for continuous playback.
+This project extends prior audio output work on Intel's SoC FPGA platform by implementing a distributed interactive control system between an Adafruit ItsyBitsy 5V 32u4 microcontroller and the DE10-Standard board. In this design, user input is captured via push buttons connected to the ItsyBitsy and transmitted over a UART interface to the DE10-Standard, where button press commands trigger audio playback sequences through the onboard WM8731 audio codec. The system demonstrates reliable, real-time command communication across heterogeneous platforms and emphasizes hardware–software co-design.
+
+
+# Component Diagram
+<img width="975" height="569" alt="image" src="https://github.com/user-attachments/assets/4a156a19-9ea9-4b33-86ee-cb44a2d4d8a5" />
