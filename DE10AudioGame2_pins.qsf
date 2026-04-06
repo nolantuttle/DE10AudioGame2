@@ -1,0 +1,65 @@
+# =============================================================================
+# DE10-Standard Pin Assignments for DE10AudioGame2
+# Add these lines to your .qsf file, or paste them into:
+#   Assignments -> Assignment Editor in Quartus
+# =============================================================================
+
+# --- Clocks & Reset ---
+set_location_assignment PIN_AF14 -to CLOCK_50
+
+# --- Keys (active-low push buttons) ---
+set_location_assignment PIN_AJ4  -to KEY[0]
+set_location_assignment PIN_AK4  -to KEY[1]
+set_location_assignment PIN_AA14 -to KEY[2]
+set_location_assignment PIN_AA15 -to KEY[3]
+
+# --- Switches ---
+set_location_assignment PIN_AB30 -to SW[0]
+set_location_assignment PIN_Y27  -to SW[1]
+set_location_assignment PIN_AB28 -to SW[2]
+set_location_assignment PIN_AC30 -to SW[3]
+set_location_assignment PIN_W25  -to SW[4]
+set_location_assignment PIN_V25  -to SW[5]
+set_location_assignment PIN_AC28 -to SW[6]
+set_location_assignment PIN_AD28 -to SW[7]
+set_location_assignment PIN_AC27 -to SW[8]
+set_location_assignment PIN_AC26 -to SW[9]
+
+# --- Red LEDs ---
+set_location_assignment PIN_AA24 -to LEDR[0]
+set_location_assignment PIN_AB23 -to LEDR[1]
+set_location_assignment PIN_AC23 -to LEDR[2]
+set_location_assignment PIN_AD24 -to LEDR[3]
+set_location_assignment PIN_AG25 -to LEDR[4]
+set_location_assignment PIN_AF25 -to LEDR[5]
+set_location_assignment PIN_AE24 -to LEDR[6]
+set_location_assignment PIN_AF24 -to LEDR[7]
+set_location_assignment PIN_AB22 -to LEDR[8]
+
+# --- Audio Codec (WM8731) ---
+set_location_assignment PIN_AF30 -to AUD_BCLK
+set_location_assignment PIN_Y15  -to AUD_DACDAT
+set_location_assignment PIN_AE28 -to AUD_DACLRCK
+set_location_assignment PIN_AF29 -to AUD_XCK
+
+# --- I2C for Audio Codec ---
+set_location_assignment PIN_AF28 -to FPGA_I2C_SCLK
+set_location_assignment PIN_AG30 -to FPGA_I2C_SDAT
+
+# --- UART RX: GPIO_10 (GPIO_0 connector, pin 11) ---
+# GPIO_0 pin 11 = FPGA ball PIN_AE17  (this is GPIO[10] on DE10-Standard)
+set_location_assignment PIN_AE17 -to UART_RX
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to UART_RX
+
+# --- UART TX: GPIO_11 (optional, currently tied high in RTL) ---
+# set_location_assignment PIN_AF17 -to UART_TX
+set_location_assignment PIN_AF17 -to UART_TX
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to UART_TX
+
+# --- I/O Standards for all audio pins ---
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to AUD_BCLK
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to AUD_DACDAT
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to AUD_DACLRCK
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to AUD_XCK
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to FPGA_I2C_SCLK
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to FPGA_I2C_SDAT
